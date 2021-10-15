@@ -5,14 +5,14 @@ with open("README.md", "r") as fh:
 
 setup(
     name="netx_fdl_compiler",
-    version="0.1.0",
+    version="0.1.1",
     author="Paul Fox",
     author_email="paul.fox@temposonics.com",
     description="Flash device label compiler for Hilscher netX90",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/pfox89/netx_fdl_compiler.git",
-    packages=['fdl_compiler'],
+    packages=['netx_fdl_compiler'],
     install_requires = ['construct', 'pyyaml'],
     classifiers=[
         "Programming Language :: Python :: 3.7",
