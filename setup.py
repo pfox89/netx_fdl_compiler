@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="netx_fdl_compiler",
-    version="0.1.1",
+    version="0.1.2",
     author="Paul Fox",
     author_email="paul.fox@temposonics.com",
     description="Flash device label compiler for Hilscher netX90",
