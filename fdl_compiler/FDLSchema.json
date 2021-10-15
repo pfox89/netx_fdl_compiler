@@ -1,0 +1,96 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "Device": {
+            "type": "object",
+            "properties": {
+                "Manufacturer": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 65535
+                },
+                "Class": { "type": "string", "enum": ["NETX90", "NETX90_SDRAM"] },
+                "Device Number": {"type": "integer" },
+                "Serial Number": { "type": "integer" },
+                "Hardware Compatibility": { "type": "integer" },
+                "Hardware Revision": { "type": "integer" }, 
+                "Production Date": { "type": "string", "pattern": "^[0-9]{4}-W[0-9]{2}$"}
+            }
+        },
+        "MAC Addresses": {
+            "type": "array",
+            "maxItems": 8,
+            "items": {"type": "string", "pattern": "^([0-9A-Fa-f]{2}[:-]?){5}[0-9A-Fa-f]{2}$" }
+        },
+        "APP MAC Addresses": {
+            "type": "array",
+            "maxItems": 4,
+            "items": { "type": "string", "pattern": "^([0-9A-Fa-f]{2}[:-]?){5}[0-9A-Fa-f]{2}$" }
+        },
+        "OEM Identification": {
+            "type": "object",
+            "properties": {
+                "Options": { 
+                    "type": "object", 
+                    "properties": {
+                        "Use OEM Serial Number": {"type": "boolean"}, 
+                        "Use OEM Order Number": {"type": "boolean"},
+                        "Use OEM Hardware Revision": {"type": "boolean"},
+                        "Use OEM Production Date": {"type": "boolean"}
+                    }
+                },
+                "Serial Number": {"type": "string", "maxLength": 27},
+                "Order Number": {"type": "string", "maxLength": 31},
+                "Hardware Revision": {"type": "string", "maxLength": 15},
+                "Production Date": {"type": "string", "maxLength": 31},
+                "Custom Data": {"type": "string", "maxLength": 112}
+            }
+        },
+        "Flash Layout": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Type": {
+                        "type": "string", 
+                        "enum": [
+                            "HWCONFIG", 
+                            "FDL", 
+                            "FW", 
+                            "FW_CONT", 
+                            "CONFIG",
+                            "REMANENT",
+                            "MANAGEMENT",
+                            "APP_CONT",
+                            "MFW",
+                            "FILESYSTEM",
+                            "FWUPDATE",
+                            "MFW_HWCONFIG",
+                            "APP"]
+                        },
+                    "Start": {"type": "integer", "minimum": 0},
+                    "Size": {"type": "integer", "minimum": 4},
+                    "Chip": {"type": "string", "enum": ["INTFLASH0", "INTFLASH1", "EXTERNAL"]},
+                    "Name": {"type": "string", "maxLength": 15},
+                    "Access": {"type": "string", "enum": ["O_RDONLY", "O_RDWR"]}
+                }
+            }
+        },
+        "Chip Table": {
+            "type": "array",
+            "maxItems": 4,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Chip": {"type": "string", "enum": ["INTFLASH0", "INTFLASH1", "EXTERNAL"]},
+                    "Driver": {"type": "string", "maxLength": 15},
+                    "Block": {"type": "integer", "minimum": 4},
+                    "Size": {"type": "integer", "minimum": 4},
+                    "Cycles": {"type": "integer", "minimum": 1}
+                }
+            }
+        }
+    }
+}

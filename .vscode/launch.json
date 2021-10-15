@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Decompile",
+            "type": "python",
+            "request": "launch",
+            "module": "fdl_compiler",
+            "args": [
+                "decompile", "FDL_NXHX90-JTAG-UseCaseA.fdl", "FDL_NXHX90-JTAG-UseCaseA.fdl.yaml"
+            ]
+        },
+        {
+          "name": "Compile",
+          "type": "python",
+          "request": "launch",
+          "module": "fdl_compiler",
+          "args": [
+              "compile", "FDL_NXHX90-JTAG-UseCaseA.fdl.yaml", "FDL_NXHX90-JTAG-UseCaseA.yaml.fdl"
+          ]
+        }
+    ]
+}

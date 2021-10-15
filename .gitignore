@@ -1,0 +1,3 @@
+build/*
+netx_fdl_compiler.egg-info/*
+dist/*

@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "./fdl_compiler/FDLSchema.json": ["*.fdl.yaml"]
+    }
+}
