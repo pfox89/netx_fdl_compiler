@@ -5,22 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Decompile",
-            "type": "python",
-            "request": "launch",
-            "module": "fdl_compiler",
-            "args": [
-                "decompile", "FDL_NXHX90-JTAG-UseCaseA.fdl", "FDL_NXHX90-JTAG-UseCaseA.fdl.yaml"
-            ]
-        },
-        {
           "name": "Compile",
           "type": "python",
           "request": "launch",
-          "module": "fdl_compiler",
+          "module": "netx_fdl_compiler",
           "args": [
-              "compile", "FDL_NXHX90-JTAG-UseCaseA.fdl.yaml", "FDL_NXHX90-JTAG-UseCaseA.yaml.fdl"
+              "compile", "FDL_NXHX90-JTAG-UseCaseA.yaml", "FDL_NXHX90-JTAG-UseCaseA.yaml.fdl"
           ]
+        },
+        {
+            "name": "Decompile",
+            "type": "python",
+            "request": "launch",
+            "module": "netx_fdl_compiler",
+            "args": [
+                "decompile", "FDL_NXHX90-JTAG-UseCaseA.yaml.fdl", "FDL_NXHX90-JTAG-UseCaseA.fdl.yaml"
+            ]
         }
     ]
 }

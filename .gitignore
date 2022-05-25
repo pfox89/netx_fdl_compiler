@@ -1,3 +1,5 @@
 build/*
 netx_fdl_compiler.egg-info/*
 dist/*
+netx_fd_compiler/__pycache__/*
+*.pyc

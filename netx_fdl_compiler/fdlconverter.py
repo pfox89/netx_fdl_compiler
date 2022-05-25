@@ -3,10 +3,8 @@ import io
 from construct import this, EnumIntegerString, Default, CString, Check, Select, Const, Container, Struct, Int16ul, PaddedString, Int32ul, Int8ul, Padding, Array, Bytes, Padded, Hex, BitStruct, Bit, Optional, Adapter, ValidationError, Checksum, RawCopy, Flag, Enum, FlagsEnum
 
 from zlib import crc32
-import base64
 
 import json
-
 
 class FixedString(Adapter):
     def _decode(self, obj, context, path):
@@ -124,19 +122,6 @@ class ChipTableAdapter(Adapter):
         pad = 4 - len(obj)
         return obj + [None] * pad
 
-class Base64(Adapter):
-    def _decode(self, obj, context, path):
-        if obj.count(0) == len(obj):
-            return None
-        else:
-            return str(base64.b64encode(obj), 'ascii')
-
-    def _encode(self, obj, context, path):
-        if obj:
-            return base64.b64decode(obj)
-        else:
-            return None
-
 class ProductionDate(Adapter):
     def _decode(self, obj, context, path):
         year=(obj >> 8 & 0xff) + 2000
@@ -193,7 +178,7 @@ class FlashDeviceLabel:
                     "Hardware Revision" / Padded(16, CString('ascii')),
                     "Production Date" / Padded(32, CString('ascii')),
                     Padding(12),  # Reserved
-                    "Custom Data" / Base64(Default(Bytes(112), bytes(112)))
+                    "Custom Data" / Default(Bytes(112), bytes(112))
                 ),
                 "Flash Layout" / FlashLayoutAdapter(),
                 "Chip Table" / ChipTableAdapter()
